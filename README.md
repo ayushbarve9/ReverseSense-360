@@ -18,7 +18,7 @@
 [Hardware Setup](#-hardware-setup--pinout) •
 [Live Demonstration](#-live-demonstration--results) •
 [Quickstart](#-quickstart-guide) •
-[Contributors](#-project-contributors)
+[Author](#-author)
 
 </div>
 
@@ -224,6 +224,15 @@ ReverseSense-360/
 
 ---
 
+## 👨‍💻 Author
+
+Developed and implemented by **Ayush Barve** (B066) as a solo project for the **Internet of Things (IoT)** curriculum at **SVKM's Shri Bhagubhai Mafatlal Polytechnic**, Department of Computer Engineering (Academic Year 2026–2027).
+
+- **Hardware Engineering & Circuit Assembly**
+- **Embedded Python Controller & Sensor Interfacing**
+- **ThingSpeak Cloud Telemetry & REST API Integration**
+- **IoT Live Web Dashboard Development**
+- **System Testing & Validation**
 ---
 
 ## 📜 License
