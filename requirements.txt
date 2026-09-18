@@ -1,0 +1,4 @@
+# ReverseSense-360 Python Dependencies
+RPi.GPIO>=0.7.1
+picamera2>=0.3.0
+requests>=2.28.0

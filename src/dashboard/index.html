@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReverseSense-360 | Live IoT Parking Safety Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand-section">
+        <h1>ReverseSense-360</h1>
+        <p>IoT-Based Smart Parking Safety & Near-Miss Forensic Capture</p>
+      </div>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>SYSTEM ONLINE</span>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="dashboard-grid">
+      <!-- Proximity Live Metric -->
+      <div class="card">
+        <div class="card-title">
+          <span>📏 Proximity Distance</span>
+        </div>
+        <div class="metric-box">
+          <div class="metric-value" id="dist-display">18.4</div>
+          <div class="metric-unit">centimeters (cm)</div>
+          <div class="proximity-bar">
+            <div class="proximity-fill" id="dist-bar" style="width: 45%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Telemetry & Configuration -->
+      <div class="card">
+        <div class="card-title">
+          <span>⚙ System Telemetry</span>
+        </div>
+        <ul class="specs-list">
+          <li>
+            <span class="label">Controller</span>
+            <span class="val">Raspberry Pi (BCM2835)</span>
+          </li>
+          <li>
+            <span class="label">Primary Sensor</span>
+            <span class="val">HC-SR04 Ultrasonic</span>
+          </li>
+          <li>
+            <span class="label">Warning Threshold</span>
+            <span class="val">&lt; 30.0 cm</span>
+          </li>
+          <li>
+            <span class="label">Critical Hazard</span>
+            <span class="val">&lt; 10.0 cm</span>
+          </li>
+          <li>
+            <span class="label">Cloud Gateway</span>
+            <span class="val">ThingSpeak REST API</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Live Camera Incident Snapshot Card -->
+      <div class="card camera-card">
+        <div class="card-title" style="justify-content: space-between;">
+          <span>📷 Latest Obstacle Snapshot (Forensic Evidence)</span>
+          <span style="font-size: 0.8rem; color: #94a3b8; font-weight: normal;">Auto-refreshed on proximity trigger</span>
+        </div>
+        <div class="image-wrapper">
+          <!-- Uses the project preview snapshot captured during laboratory trial -->
+          <img id="camera-feed" src="../../assets/web_dashboard_preview.png" alt="Raspberry Pi Camera Obstacle Snapshot">
+          <div class="image-timestamp" id="camera-timestamp">LIVE FEED SYNC: ACTIVE</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      ReverseSense-360 &bull; SVKM's Shri Bhagubhai Mafatlal Polytechnic &bull; Department of Computer Engineering
+    </footer>
+  </div>
+</body>
+</html>
