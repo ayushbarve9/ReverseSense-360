@@ -224,17 +224,6 @@ ReverseSense-360/
 
 ---
 
-## 👥 Project Contributors
-
-Developed as part of the **Internet of Things (IoT)** curriculum at **SVKM's Shri Bhagubhai Mafatlal Polytechnic**, Department of Computer Engineering (Academic Year 2026–2027):
-
-- **Ayush Barve** (B066) – *Project Lead, Hardware Interfacing & Firmware*
-- **Arif Choudhary** (B065)
-- **Vivaan Shah** (B057)
-- **Jaival Prajapati** (B064)
-- **Rushabh Pandya** (B039)
-- **Aditya Shah** (B050)
-
 ---
 
 ## 📜 License
