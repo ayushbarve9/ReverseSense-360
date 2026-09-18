@@ -1,38 +1,35 @@
-<div align="center">
+# 🚗 ReverseSense-360 — IoT Smart Parking Safety & Near-Miss Forensic Capture System
 
-# 🚗 ReverseSense-360
-### **IoT-Based Smart Parking Safety & Near-Miss Forensic Capture System**
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Hardware](https://img.shields.io/badge/Hardware-Raspberry%20Pi-C51A4A?style=for-the-badge&logo=raspberry-pi&logoColor=white)](https://www.raspberrypi.com/)
+[![Cloud](https://img.shields.io/badge/Cloud-ThingSpeak%20IoT-00558F?style=for-the-badge&logo=mathworks&logoColor=white)](https://thingspeak.com/)
+[![Sensors](https://img.shields.io/badge/Sensors-HC--SR04%20%7C%20Pi%20Camera-4B8BBE?style=for-the-badge)](docs/hardware_specifications.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Complete-28a745?style=for-the-badge)](#)
 
-[![Python 3.x](https://img.shields.io/badge/Python-3.9%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
-[![Hardware](https://img.shields.io/badge/Hardware-Raspberry%20Pi-C51A4A.svg?logo=raspberry-pi&logoColor=white)](https://www.raspberrypi.com/)
-[![Cloud](https://img.shields.io/badge/Cloud-ThingSpeak%20IoT-00558F.svg?logo=mathworks&logoColor=white)](https://thingspeak.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Maintenance](https://img.shields.io/badge/Status-Complete-success.svg)](#)
-
-*An intelligent, multi-sensory proximity warning and automated photographic evidence logging system designed to eliminate blind spots, prevent low-speed parking collisions, and provide verifiable cloud telemetry.*
+An intelligent, multi-sensory proximity warning and automated photographic evidence logging system designed to eliminate blind spots, prevent low-speed parking collisions, and provide verifiable cloud telemetry.
 
 ---
 
-[Key Features](#-key-features) •
-[System Architecture](#-system-architecture) •
-[Hardware Setup](#-hardware-setup--pinout) •
-[Live Demonstration](#-live-demonstration--results) •
-[Quickstart](#-quickstart-guide) •
-[Author](#-author)
-
-</div>
-
----
-
-## 📌 Problem Overview
+## 📌 Executive Summary
 
 Urban parking accidents—including collisions with low-lying pillars, bollards, walls, and pedestrians—are responsible for frequent vehicle damage and disputed liability claims. Traditional reverse-parking sensors only produce simple beeps without recording the incident or providing visual confirmation.
 
-**ReverseSense-360** bridges this gap by combining:
-1. **Millisecond-level Ultrasonic Proximity Sensing** for immediate obstacle detection.
-2. **Multi-Modal Warning Actuation** (visual LED indicators and audible buzzer alarms).
-3. **Automated Incident Camera Snapshots** to preserve tamper-proof visual evidence of near-collisions.
-4. **Cloud Telemetry & Web Dashboarding** on ThingSpeak and local web consoles for live remote monitoring.
+**ReverseSense-360** bridges this gap through an end-to-end edge-to-cloud IoT architecture:
+1. **Millisecond-Level Ultrasonic Proximity Sensing**: Continuously samples obstacle distance with $\pm0.5\text{ cm}$ precision.
+2. **Multi-Modal Warning Actuation**: Multi-tiered visual (LED) and audible (active buzzer) alerts scaled to distance severity.
+3. **Automated Incident Camera Snapshots**: Triggers the Raspberry Pi Camera Module to capture and preserve timestamped photographic evidence of near-collisions.
+4. **Cloud Telemetry & Web Dashboarding**: Publishes real-time telemetry over Wi-Fi via REST API to **ThingSpeak IoT Cloud** and serves a local web console for live monitoring.
+
+---
+
+## 🚀 Quick Links
+
+* 📑 **[Project Architecture & Laboratory Report (PDF)](docs/IoT_Smart_Parking_Safety_Report.pdf)**
+* ⚡ **[Hardware Wiring & Electrical Pinout Guide](docs/hardware_specifications.md)**
+* 🐍 **[Core Sensing & Alerting Controller (`src/main.py`)](src/main.py)**
+* 💻 **[Live Web Dashboard Interface (`src/dashboard/`)](src/dashboard/index.html)**
+* 💼 **[Resume / Portfolio Highlights](#-resume--portfolio-highlights)**
 
 ---
 
@@ -106,41 +103,37 @@ flowchart TD
 | **Camera** | CSI Ribbon Port | — | Direct MIPI-CSI interface |
 
 > [!IMPORTANT]
-> **Voltage Divider Protection**: The HC-SR04's `ECHO` pin outputs a $5\text{ V}$ signal. Because the Raspberry Pi GPIO is rated for **$3.3\text{ V}$ maximum**, a voltage divider ($1\text{ k}\Omega$ series resistor and $2\text{ k}\Omega$ pull-down resistor to GND) is required to safely step down the signal to $3.33\text{ V}$.
+> **Voltage Divider Protection**: The HC-SR04's `ECHO` pin outputs a $5\text{ V}$ signal. Because the Raspberry Pi GPIO is rated for **$3.3\text{ V}$ maximum**, a voltage divider ($1\text{ k}\Omega$ series resistor and $2\text{ k}\Omega$ pull-down resistor to GND) is required to safely step down the signal to $3.33\text{ V}$. For detailed schematics, see [hardware_specifications.md](docs/hardware_specifications.md).
 
 ---
 
 ## 📸 Live Demonstration & Results
 
-<div align="center">
-
 ### 1. Hardware Laboratory Assembly
-<img src="assets/hardware_assembly.jpg" width="700" alt="Hardware Assembly on Raspberry Pi IoT Board" />
+![Hardware Assembly on Raspberry Pi IoT Board](assets/hardware_assembly.jpg)
 
 *Assembled on Raspberry Pi IoT Development Platform (E87-11) with ultrasonic sensor, Pi camera ribbon, and alert LEDs.*
 
 ---
 
 ### 2. Live Execution & Shell Telemetry
-<img src="assets/thonny_execution_output.jpg" width="700" alt="Thonny Python Shell Execution Output" />
+![Thonny Python Shell Execution Output](assets/thonny_execution_output.jpg)
 
 *Real-time distance polling in Thonny IDE. When proximity dropped to 9.62 cm, 6.31 cm, and 3.06 cm, alerts triggered instantly.*
 
 ---
 
 ### 3. ThingSpeak Cloud Analytics Dashboard
-<img src="assets/thingspeak_analytics.png" width="750" alt="ThingSpeak IoT Cloud Live Analytics" />
+![ThingSpeak IoT Cloud Live Analytics](assets/thingspeak_analytics.png)
 
 *Continuous cloud telemetric monitoring: Field 1 (Distance), Field 2 (Binary Alert Flag), and Field 3 (Cumulative Incident Count).*
 
 ---
 
 ### 4. Incident Web Dashboard Preview
-<img src="assets/web_dashboard_preview.png" width="750" alt="ReverseSense-360 Web Dashboard" />
+![ReverseSense-360 Web Dashboard](assets/web_dashboard_preview.png)
 
 *Live local web dashboard displaying system operational status and automatically fetched obstacle snapshots.*
-
-</div>
 
 ---
 
@@ -157,6 +150,18 @@ Over **25 recorded laboratory test trials** at distances ranging from $3\text{ c
 - **Measurement Accuracy**: $\pm0.5\text{ cm}$ verified against manual tape calibration.
 - **Alert Latency**: $< 50\text{ ms}$ from obstacle crossing threshold to buzzer/LED actuation.
 - **Cloud Upload Reliability**: **100%** over 25 consecutive transmission cycles.
+
+---
+
+## 💼 Resume / Portfolio Highlights
+
+Looking to add this project to your resume or portfolio? Here are concise, high-impact bullet points:
+
+* **IoT Edge Device & Sensor Integration**: Engineered an active collision avoidance system on Raspberry Pi (BCM2835) interfacing an HC-SR04 ultrasonic distance sensor, Pi Camera module, active buzzer, and LED indicators.
+* **Real-Time Signal Processing & Safety Automation**: Implemented continuous distance sampling at 500 ms intervals with $\pm0.5\text{ cm}$ measurement accuracy and $< 50\text{ ms}$ actuation latency, enforcing 3-tier safety zones ($> 30\text{ cm}$, $10 - 30\text{ cm}$, $< 10\text{ cm}$).
+* **Automated Forensic Evidence Logging**: Configured event-driven photographic capture upon critical hazard detection with dynamic cooldown throttling to prevent frame spamming.
+* **Cloud Telemetry & REST API Communication**: Developed automated Wi-Fi telemetry pipelines transmitting live distance metrics, binary alert flags, and cumulative incident counters to ThingSpeak IoT Cloud every 15 seconds.
+* **Full-Stack Monitoring Dashboard**: Built a responsive, zero-dependency HTML5/CSS3 frontend for real-time telemetry inspection and snapshot forensics.
 
 ---
 
@@ -190,50 +195,49 @@ python3 src/main.py
 ```
 
 ### 6. View the Dashboard
-Simply open `src/dashboard/index.html` in any web browser to view the incident feed and status layout.
+Simply open [`src/dashboard/index.html`](src/dashboard/index.html) in any web browser to view the incident feed and status layout.
 
 ---
 
 ## 📁 Repository Structure
 
-```
+```text
 ReverseSense-360/
-├── README.md                      # Complete project documentation & guide
-├── LICENSE                        # MIT Open-Source License
-├── requirements.txt               # Python package dependencies
-├── .gitignore                     # Git ignore rules for builds, logs & credentials
+├── .gitignore                            # Git ignore rules for builds, temporary files & cache
+├── LICENSE                               # MIT Open-Source License
+├── README.md                             # Comprehensive project documentation & portfolio guide
+├── requirements.txt                      # Python package dependencies
 │
-├── src/                           # System source code
-│   ├── main.py                    # Core sensing, alerting & telemetry controller
-│   └── dashboard/                 # Web monitoring dashboard
-│       ├── index.html             # Responsive dashboard layout
-│       └── style.css              # Custom styling & animations
+├── src/                                  # System source code
+│   ├── main.py                           # Core sensing, alerting, camera & telemetry controller
+│   └── dashboard/                        # Web monitoring console
+│       ├── index.html                    # Responsive dashboard layout
+│       └── style.css                     # Modern UI styling & animations
 │
-├── docs/                          # Academic papers and schematics
-│   ├── IoT_Smart_Parking_Safety_Report.pdf   # Complete institutional project report
+├── docs/                                 # Technical reports & hardware schematics
+│   ├── IoT_Smart_Parking_Safety_Report.pdf   # Complete formal engineering report
 │   ├── IoT_Smart_Parking_Safety_Report.docx  # Editable report manuscript
-│   ├── hardware_specifications.md            # Electrical pinouts & voltage divider guide
-│   └── experiment_case_study_format.pdf      # Lab syllabus reference template
+│   ├── hardware_specifications.md            # Electrical pinouts, resistors & circuit guide
+│   └── iot thingspeak.docx                   # Cloud dashboard & integration reference
 │
-└── assets/                        # High-resolution demonstration media
-    ├── hardware_assembly.jpg      # Lab hardware assembly photograph
-    ├── thonny_execution_output.jpg# Shell output execution screenshot
-    ├── thingspeak_analytics.png   # ThingSpeak telemetry graph screenshot
-    └── web_dashboard_preview.png  # IoT web interface screenshot
+└── assets/                               # High-resolution demonstration media
+    ├── hardware_assembly.jpg             # Physical circuit assembly on Raspberry Pi board
+    ├── thonny_execution_output.jpg       # Shell output & real-time proximity logs
+    ├── thingspeak_analytics.png          # Live ThingSpeak cloud telemetry graphs
+    └── web_dashboard_preview.png         # Web monitoring console screenshot
 ```
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Author & Project Credits
 
-Developed and implemented by **Ayush Barve** (B066) as a solo project for the **Internet of Things (IoT)** curriculum at **SVKM's Shri Bhagubhai Mafatlal Polytechnic**, Department of Computer Engineering (Academic Year 2026–2027).
+* **Ayush Barve** — Computer Engineering Department, Shri Bhagubhai Mafatlal Polytechnic (SVKM)
+* **Course**: Internet of Things (IoT)
+* **Academic Year**: 2026–2027
+* **GitHub Profile**: [@ayushbarve9](https://github.com/ayushbarve9)
 
-- **Hardware Engineering & Circuit Assembly**
-- **Embedded Python Controller & Sensor Interfacing**
-- **ThingSpeak Cloud Telemetry & REST API Integration**
-- **IoT Live Web Dashboard Development**
-- **System Testing & Validation**
 ---
 
 ## 📜 License
-This project is open-source and licensed under the [MIT License](LICENSE).
+
+This project is licensed under the [MIT License](LICENSE) — free to use for academic, research, and portfolio reference.
